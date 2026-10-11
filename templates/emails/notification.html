@@ -1,0 +1,10 @@
+New interest submission received.
+
+Name: {{ interest.name }}
+Email: {{ interest.email }}
+Phone: {{ interest.phone }}
+Location: {{ interest.get_location_display }}
+Interests: {{ interest.interests }}
+Note: {{ interest.note|default:"None" }}
+
+Submitted: {{ interest.created_at }}

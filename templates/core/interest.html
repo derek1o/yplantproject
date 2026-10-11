@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}What Are You Into? - Y Plant Affricanaidd CIC{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow">
+    <h1 class="section-title">What Are You Into?</h1>
+    <p class="muted">
+      Tick everything that appeals to you. No account, no password,
+      just tell us what you'd like to learn and how to reach you.
+    </p>
+
+    <form method="post" action="{% url 'express_interest' %}" class="form" novalidate
+          data-ajax-url="{% url 'express_interest_ajax' %}">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="form-errors">{{ form.non_field_errors }}</div>
+      {% endif %}
+
+      <fieldset>
+        <legend>Your details</legend>
+
+        <div class="form-group">
+          <label for="{{ form.name.id_for_label }}">Your name</label>
+          {{ form.name }}
+          {{ form.name.errors }}
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+          <div class="form-group">
+            <label for="{{ form.phone.id_for_label }}">Phone</label>
+            {{ form.phone }}
+            {{ form.phone.errors }}
+          </div>
+        </div>
+
+        <p class="muted" style="margin-top:.25rem; font-size:.85rem;">
+          We'll only use these to send you programme details and updates.
+        </p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Pick your interests</legend>
+
+        <div class="form-group">
+          <div class="interest-cards">
+            {% for value, label in form.interests.field.choices %}
+              {% if value != "other" %}
+                <label class="interest-card" for="id_interests_{{ forloop.counter0 }}">
+                  <div class="interest-card-image">
+                    <img src="{% static 'img/' %}{{ value }}.jpg" alt="{{ label }}">
+                  </div>
+                  <div class="interest-card-body">
+                    <input type="checkbox"
+                           name="interests"
+                           value="{{ value }}"
+                           id="id_interests_{{ forloop.counter0 }}"
+                           {% if value in form.interests.value %}checked{% endif %}>
+                    <span>{{ label }}</span>
+                  </div>
+                </label>
+              {% else %}
+                <label class="interest-card interest-card-no-image" for="id_interests_{{ forloop.counter0 }}">
+                  <div class="interest-card-body">
+                    <input type="checkbox"
+                           name="interests"
+                           value="{{ value }}"
+                           id="id_interests_{{ forloop.counter0 }}"
+                           {% if value in form.interests.value %}checked{% endif %}>
+                    <span>{{ label }}</span>
+                  </div>
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {{ form.interests.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.location.id_for_label }}">Which location works for you?</label>
+          {{ form.location }}
+          {{ form.location.errors }}
+        </div>
+
+        <div class="form-group">
+          <label for="{{ form.note.id_for_label }}">
+            Anything else? <span class="muted">(optional)</span>
+          </label>
+          {{ form.note }}
+          {{ form.note.errors }}
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-primary btn-lg btn-block">
+        Send My Interests
+      </button>
+    </form>
+  </div>
+</section>
+{% endblock %}

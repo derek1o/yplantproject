@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="tag">Ages 12–18</span>
+      <h1>Digital Empowerment for Young People</h1>
+      <p class="lead">
+        A <strong>FREE</strong> creative digital programme for young people in
+        Newport &amp; Aberdare - funded by BBC Children in Need.
+      </p>
+      <div class="hero-cta">
+        <a href="{% url 'express_interest' %}" class="btn btn-primary btn-lg">Tell Us What You're Into</a>
+        <a href="#learn" class="btn btn-outline btn-lg">What You'll Learn</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!-- White circle acts as a rotating carousel of programme images -->
+      <div class="visual-circle main">
+        <div class="circle-carousel">
+          <img src="{% static 'img/photography.jpg' %}" alt="Photography" class="carousel-slide is-active">
+          <img src="{% static 'img/videography.jpg' %}" alt="Videography" class="carousel-slide">
+          <img src="{% static 'img/drones.jpg' %}" alt="Drones" class="carousel-slide">
+          <img src="{% static 'img/editing.jpg' %}" alt="Editing" class="carousel-slide">
+          <img src="{% static 'img/social.jpg' %}" alt="Social Media" class="carousel-slide">
+          <img src="{% static 'img/coding.jpg' %}" alt="Coding" class="carousel-slide">
+        </div>
+      </div>
+      <div class="visual-circle accent-1"></div>
+      <div class="visual-circle accent-2"></div>
+    </div>
+  </div>
+</section>
+
+<section id="learn" class="section section-light">
+  <div class="container">
+    <h2 class="section-title">What You'll Learn</h2>
+
+    <div class="cards cards-with-images">
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/photography.jpg' %}" alt="Photography">
+        </div>
+        <div class="card-body">
+          <h3>Photography</h3>
+          <p>Learn to shoot with professional cameras, composition, lighting,
+             and editing your best shots.</p>
+        </div>
+      </article>
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/videography.jpg' %}" alt="Videography">
+        </div>
+        <div class="card-body">
+          <h3>Videography</h3>
+          <p>Plan, shoot, and direct short films and social videos from start
+             to finish.</p>
+        </div>
+      </article>
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/drones.jpg' %}" alt="Drones">
+        </div>
+        <div class="card-body">
+          <h3>Drones</h3>
+          <p>Fly safely, capture aerial footage, and understand drone
+             regulations.</p>
+        </div>
+      </article>
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/editing.jpg' %}" alt="Editing">
+        </div>
+        <div class="card-body">
+          <h3>Editing &amp; Post-Production</h3>
+          <p>Cut, colour, and polish footage using professional editing
+             software.</p>
+        </div>
+      </article>
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/social.jpg' %}" alt="Social Media">
+        </div>
+        <div class="card-body">
+          <h3>Social Media Content</h3>
+          <p>Create reels, posts, and campaigns that actually get seen.</p>
+        </div>
+      </article>
+
+      <article class="card card-image">
+        <div class="card-image-wrap">
+          <img src="{% static 'img/coding.jpg' %}" alt="Coding">
+        </div>
+        <div class="card-body">
+          <h3>Coding &amp; Web Development</h3>
+          <p>Build your own websites and apps with HTML, CSS, and JavaScript -
+             beginner-friendly.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="container narrow">
+    <h2 class="section-title">About the Programme</h2>
+    <p>
+      Y Plant Affricanaidd CIC is excited to launch a brand-new digital
+      empowerment programme designed specifically for young people aged 12 to 18.
+      Whether you want to be behind the camera, directing, editing, flying
+      drones, or building websites, this programme is your gateway into the
+      digital world.
+    </p>
+    <p class="funded">Proudly funded by <strong>BBC Children in Need</strong>.</p>
+  </div>
+</section>
+
+<section id="locations" class="section section-light">
+  <div class="container narrow">
+    <h2 class="section-title">Who Is This For?</h2>
+    <p>Open to all young people aged 12–18 living in South Wales. Currently recruiting in:</p>
+    <div class="locations">
+      <div class="location-card">📍 <strong>Newport</strong></div>
+      <div class="location-card">📍 <strong>Aberdare</strong></div>
+    </div>
+    <div class="cta-center">
+      <a href="{% url 'express_interest' %}" class="btn btn-primary btn-lg">Get Involved</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

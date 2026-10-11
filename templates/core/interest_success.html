@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Thanks! - Y Plant Affricanaidd CIC{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container narrow center">
+    <div class="success-icon">✓</div>
+    <h1>Thanks for sharing!</h1>
+    <p class="lead">
+      We've got your interests. If you left an email, we'll be in touch
+      as soon as session dates are confirmed.
+    </p>
+    <a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+  </div>
+</section>
+{% endblock %}

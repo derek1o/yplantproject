@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Y Plant Affrican aid CIC - Digital Empowerment{% endblock %}</title>
+  <meta name="description" content="A FREE creative digital programme for young people aged 12 and above in Newport & Aberdare, funded by BBC Children in Need.">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="{% url 'home' %}" class="logo">
+        <span class="logo-mark">YPA</span>
+        <span class="logo-text">Y Plant Affricanaidd CIC</span>
+      </a>
+      <nav>
+        <a href="{% url 'home' %}#about">About</a>
+        <a href="{% url 'home' %}#learn">What You'll Learn</a>
+        <a href="{% url 'home' %}#locations">Locations</a>
+        <a href="{% url 'express_interest' %}" class="btn btn-primary">Get Involved</a>
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class="container messages">
+      {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Y Plant Affricanaidd CIC</h4>
+          <p>Digital Empowerment for Young People</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="mailto:hello@yplantaffricanaidd.org">hello@yplantaffricanaidd.org</a></p>
+        </div>
+        <div>
+          <h4>Locations</h4>
+          <p>Newport &amp; Aberdare, South Wales</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {% now "Y" %} Y Plant Affricanaidd CIC. Funded by BBC Children in Need.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/app.js' %}" defer></script>
+</body>
+</html>
